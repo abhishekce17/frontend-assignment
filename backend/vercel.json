@@ -1,0 +1,21 @@
+{
+   "version": 2,
+   "builds": [
+      {
+         "src": "src/index.ts",
+         "use": "@vercel/node",
+         "config": {
+            "includeFiles": [
+               "src/**/*.ts",
+               "hotel_bookings_1000.csv"
+            ]
+         }
+      }
+   ],
+   "routes": [
+      {
+         "src": "/(.*)",
+         "dest": "src/index.ts"
+      }
+   ]
+}
