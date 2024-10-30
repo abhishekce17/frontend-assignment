@@ -2,9 +2,7 @@ import mongoose, { Document, Schema } from "mongoose";
 
 interface IBooking extends Document {
   hotel: string;
-  arrival_date_year: number;
-  arrival_date_month: string;
-  arrival_date_day_of_month: number;
+  arrival_date: Date;
   adults: number;
   children: number;
   babies: number;
@@ -13,9 +11,7 @@ interface IBooking extends Document {
 
 const BookingSchema: Schema = new Schema({
   hotel: { type: String, required: true },
-  arrival_date_year: { type: Number, required: true },
-  arrival_date_month: { type: String, required: true },
-  arrival_date_day_of_month: { type: Number, required: true },
+  arrival_date: { type: Date, required: true },
   adults: { type: Number, required: true, min: 1 },
   children: { type: Number, default: 0 },
   babies: { type: Number, default: 0 },
@@ -24,4 +20,3 @@ const BookingSchema: Schema = new Schema({
 
 const Booking = mongoose.model<IBooking>("Booking", BookingSchema);
 export default Booking;
-export { IBooking };
